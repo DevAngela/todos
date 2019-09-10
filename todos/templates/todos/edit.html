@@ -1,0 +1,14 @@
+{% extends 'todos/base.html' %}
+
+{% block body %}
+
+<h1>To-do 수정하기 페이지</h1>
+<form action="{% url 'todos:update' todo.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{ todo.title }}">
+    <!-- 연도-월-일이 그냥은 안 들어간다. python과 html코드 간 date형식 차이가 나서... -->
+    <input type="date" name="due-date" value="{{ todo.due_date | date:'Y-m-d' }}"> 
+    <input type="submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'todos/base.html' %}
+
+{% block body %}
+
+<h1>To-do 작성하기 페이지</h1>
+<form action="{% url 'todos:create' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="title">
+    <!-- html안에서는 _언더바 안 쓰는 게 관례다. 링크URL내에서 언더바 잘 안 보이니까! -->
+    <input type="date" name="due-date"> 
+    <input type="submit">
+</form>
+
+{% endblock %}
